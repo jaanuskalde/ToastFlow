@@ -1,0 +1,150 @@
+Cmp-Mod V01 Created by CvPcb (2012-nov-02)-testing date = E 18 veebr 2013 16:12:25 EET
+
+BeginCmp
+TimeStamp = /5121F45C;
+Reference = C1;
+ValeurCmp = 100n;
+IdModule  = C_5x17.5mm_15;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F489;
+Reference = C2;
+ValeurCmp = 100u;
+IdModule  = CP_5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F36D;
+Reference = C3;
+ValeurCmp = C;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F20A;
+Reference = C4;
+ValeurCmp = 100n;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /512222E2;
+Reference = D1;
+ValeurCmp = ZENER;
+IdModule  = SOD323;
+EndCmp
+
+BeginCmp
+TimeStamp = /512222D3;
+Reference = D2;
+ValeurCmp = DIODE;
+IdModule  = 0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F313;
+Reference = D3;
+ValeurCmp = LED;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F188;
+Reference = F1;
+ValeurCmp = FUSE;
+IdModule  = FUSE_HOLDER_20x5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F1DD;
+Reference = IC1;
+ValeurCmp = ATTINY13;
+IdModule  = SO8E;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F16C;
+Reference = K1;
+ValeurCmp = CONN_3;
+IdModule  = conn_3_3.5mm_screw;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F296;
+Reference = P1;
+ValeurCmp = CONN_3X2;
+IdModule  = conn_3x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F449;
+Reference = R1;
+ValeurCmp = 47;
+IdModule  = 1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /51220646;
+Reference = R2;
+ValeurCmp = 1M;
+IdModule  = 1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F287;
+Reference = R3;
+ValeurCmp = 47;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /51220808;
+Reference = R4;
+ValeurCmp = 10k;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F2E7;
+Reference = R5;
+ValeurCmp = 10k;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F322;
+Reference = R6;
+ValeurCmp = 1k;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F3FB;
+Reference = R7;
+ValeurCmp = 100k;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F35E;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = switch_R13;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F3DD;
+Reference = TH1;
+ValeurCmp = THERMISTOR;
+IdModule  = conn_2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5121F026;
+Reference = U1;
+ValeurCmp = TRIAC;
+IdModule  = DPAK;
+EndCmp
+
+EndListe
