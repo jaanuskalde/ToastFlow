@@ -68,7 +68,7 @@ size: ${TARGET}
 ## Clean target
 .PHONY: clean
 clean:
-	-rm -rf $(OBJECTS) toastflow.elf dep/* toastflow.hex toastflow.eep toastflow.lss toastflow.map
+	-rm -rf $(OBJECTS) toastflow.elf dep toastflow.hex toastflow.eep toastflow.lss toastflow.map
 
 
 ## Other dependencies
