@@ -16,47 +16,110 @@
 int main()
 {
 
-	// Clear interrupts
-	cli();
-
-	PORTB |= TRIAC; //Toggle the led
-
-	// Inputs and outputs
+	cli();	// Clear interrupts
+	PORTB |= TRIAC; //Turn off the Triac
 	DDRB = 0b00010100;
 
-	//Enable interrupts
-	sei();
+	//ADC conf
+	ADMUX = ADLAR | MUX1 | MUX0;
+	ADCSRA = ADEN | ADPS1 | ADPS0;
+	sei();//Enable interrupts
+	
+	enum 
+	{
+		OFF, 
+		PREHEAT, 
+		REFLOW, 
+		COOLDOWN
+	} state = OFF;
 
-	//turn on the led
-	PORTB |= LED; //Toggle the led
+	uint8_t last_sense = 0;
+	uint16_t counter = 0;
+	uint16_t last_voltage = 0;
+	uint8_t heater_request = 0;
 
-	//delay while 
-	while (SWITCH & PINB);
-
-	char tmp = 0;
-
+	//Application loop
 	while (1)
 	{
-		if (PINB & SENSE)
+		//Wait for button pressing 
+		while (SWITCH & PINB)
 		{
-			tmp = 1;
-		}
-		else
-		{
-			if (tmp)
-			{
-				PORTB &= ~TRIAC;
-				_delay_us(50);
-				PORTB |= TRIAC;
-				_delay_ms(10);
-				PORTB &= ~TRIAC;
-				_delay_us(50);
-				PORTB |= TRIAC;
-			}
-			tmp = 0;
+			counter ++;
+			if (counter & 0xffef) PORTB |= LED else PORTB &= ~LED;
+			_delay_ms(4);
 		}
 
-		_delay_ms(1);
-		PORTB ^= LED; //Toggle the led
+		state = PREHEAT;
+		PORTB |= LED;
+		counter = 0;
+
+		while (state != OFF)
+		{
+			if (PINB & SENSE)
+			{
+				last_sense = 1;
+			}
+			else //on falling edge
+			{
+				if (last_sense)//turn on for this whole cycle
+				{
+					if (heater_request)
+					{
+						PORTB &= ~TRIAC;
+						_delay_us(50);
+						PORTB |= TRIAC;
+						_delay_ms(10);
+						PORTB &= ~TRIAC;
+						_delay_us(50);
+						PORTB |= TRIAC;
+					}
+					else
+					{
+						_delay_ms(11);
+					}
+					counter ++;
+					if (state == PREHEAT || state == COOLDOWN) PORTB ^= LED; //blink the led
+				}
+				last_sense = 0;
+			}
+			//about 19ms to do measurement and user interaction
+			
+			ADCSRA |= ADSC; //start conversion
+			while (~ADCSRA & ADIF);//wait it to complete
+			last_voltage = average(last_voltage, ADC);//get the content
+
+			switch(state)
+			{
+				case OFF:
+					PORTB &= ~LED;
+					break;
+				case PREHEAT:
+					if (last_voltage > 41000) heater_request = 0; else heater_request = 1;
+					if (counter > 3500)
+					{
+						state = REFLOW;
+						PORTB |= LED;
+						counter = 0;
+					}
+					break;
+				case REFLOW:
+					if (last_voltage > 57000) heater_request = 0; else heater_request = 1;
+					if (counter > 4500)
+					{
+						state = COOLDOWN;
+						counter = 0;
+					}
+					break;
+				case COOLDOWN:
+					if (last_voltage < 4220)
+					{
+						state = OFF;
+						PORTB &= ~LED;
+					}
+					break;
+			}
+			
+			_delay_ms(1);
+		}
 	}
 }
