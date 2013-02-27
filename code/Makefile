@@ -1,5 +1,5 @@
 ###############################################################################
-# Makefile for the project test1
+# Makefile for the project tostflow
 ###############################################################################
 
 ## General Flags
@@ -23,7 +23,7 @@ ASMFLAGS += -x assembler-with-cpp -Wa,-gdwarf2
 
 ## Linker flags
 LDFLAGS = $(COMMON)
-LDFLAGS +=  -Wl,-Map=test1.map
+LDFLAGS +=  -Wl,-Map=toastflow.map
 
 
 ## Intel Hex file production flags
