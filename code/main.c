@@ -29,8 +29,7 @@ int main()
 	{
 		OFF, 
 		PREHEAT, 
-		REFLOW, 
-		COOLDOWN
+		REFLOW
 	} state = OFF;
 
 	uint8_t last_sense = 0;
@@ -45,7 +44,7 @@ int main()
 		while (SWITCH & PINB)
 		{
 			counter ++;
-			if (counter & 0xffef) PORTB |= LED else PORTB &= ~LED;
+			if (counter & 0x10) PORTB |= LED else PORTB &= ~LED;
 			_delay_ms(4);
 		}
 
@@ -78,7 +77,7 @@ int main()
 						_delay_ms(11);
 					}
 					counter ++;
-					if (state == PREHEAT || state == COOLDOWN) PORTB ^= LED; //blink the led
+					if (state == PREHEAT) PORTB ^= LED; //blink the led
 				}
 				last_sense = 0;
 			}
@@ -94,7 +93,7 @@ int main()
 					PORTB &= ~LED;
 					break;
 				case PREHEAT:
-					if (last_voltage > 41000) heater_request = 0; else heater_request = 1;
+					if (last_voltage < 41200) heater_request = 0; else heater_request = 1;
 					if (counter > 3500)
 					{
 						state = REFLOW;
@@ -103,18 +102,11 @@ int main()
 					}
 					break;
 				case REFLOW:
-					if (last_voltage > 57000) heater_request = 0; else heater_request = 1;
+					if (last_voltage < 36000) heater_request = 0; else heater_request = 1;
 					if (counter > 4500)
 					{
-						state = COOLDOWN;
-						counter = 0;
-					}
-					break;
-				case COOLDOWN:
-					if (last_voltage < 4220)
-					{
 						state = OFF;
-						PORTB &= ~LED;
+						counter = 0;
 					}
 					break;
 			}
