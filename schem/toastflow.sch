@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date K 20 veebr 2013 23:50:52 EET
+EESchema Schematic File Version 2  date K 27 veebr 2013 22:57:51 EET
 LIBS:tech-thing
 LIBS:toastflow-cache
 EELAYER 27 0
@@ -7,7 +7,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "20 feb 2013"
+Date "27 feb 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -304,7 +304,7 @@ L R R7
 U 1 1 5121F3FB
 P 7600 3800
 F 0 "R7" V 7680 3800 50  0000 C CNN
-F 1 "100k" V 7600 3800 50  0000 C CNN
+F 1 "2k2" V 7600 3800 50  0000 C CNN
 F 2 "" H 7600 3800 60  0001 C CNN
 F 3 "" H 7600 3800 60  0001 C CNN
 	1    7600 3800
