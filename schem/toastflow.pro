@@ -1,6 +1,6 @@
-update=E 18 veebr 2013 12:54:42 EET
+update=E 08 juuli 2013 13:45:12 EEST
 version=1
-last_client=pcbnew
+last_client=eeschema
 [cvpcb]
 version=1
 NetIExt=net
@@ -8,16 +8,6 @@ NetIExt=net
 EquName1=devcms
 [general]
 version=1
-[eeschema]
-version=1
-LibDir=
-NetFmtName=
-RptD_X=0
-RptD_Y=100
-RptLab=1
-LabSize=60
-[eeschema/libraries]
-LibName1=tech-thing
 [pcbnew]
 version=1
 LastNetListRead=
@@ -38,4 +28,14 @@ BoardOutlineThickness=0,15
 ModuleOutlineThickness=0,15
 [pcbnew/libraries]
 LibDir=
+LibName1=tech-thing
+[eeschema]
+version=1
+LibDir=
+NetFmtName=
+RptD_X=0
+RptD_Y=100
+RptLab=1
+LabSize=60
+[eeschema/libraries]
 LibName1=tech-thing

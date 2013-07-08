@@ -21,8 +21,8 @@ int main()
 	DDRB = 0b00010100;
 
 	//ADC conf
-	ADMUX = ADLAR | MUX1 | MUX0;
-	ADCSRA = ADEN | ADPS1 | ADPS0;
+	ADMUX = (1<<ADLAR) | (1<<MUX1) | (1<<MUX0);
+	ADCSRA = (1<<ADEN) | (1<<ADPS1) | (1<<ADPS0);
 	sei();//Enable interrupts
 	
 	enum 
@@ -83,8 +83,8 @@ int main()
 			}
 			//about 19ms to do measurement and user interaction
 			
-			ADCSRA |= ADSC; //start conversion
-			while (~ADCSRA & ADIF);//wait it to complete
+			ADCSRA |= (1<<ADSC); //start conversion
+			while (ADCSRA & (1<<ADSC));//wait it to complete
 			last_voltage = average(last_voltage, ADC);//get the content
 
 			switch(state)
@@ -107,6 +107,7 @@ int main()
 					{
 						state = OFF;
 						counter = 0;
+						heater_request = 0;
 					}
 					break;
 			}
