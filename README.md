@@ -18,7 +18,7 @@ Uses weird temperature sensor. Heats boards to 150 degrees (1.3 kΩ, 3.143V, 412
 |-----------|-------|-----|-------|
 |Attiny13   |       | SO8 |1704567|
 |Temp sensor|       |DO-34|1672407|
-|The button ||1634684|
+|The button |||1634684|
 |Screw terminal|3x3.5 mm||3882627|
 |TRIAC|4A|DPAK|1757884|
 |X1 capacitor|100 nF||1907253|
