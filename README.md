@@ -1,7 +1,7 @@
 ToastFlow
 =========
 
-Toaster reflow oven controller. Abandoned project due to some bugs and security.
+Toaster reflow oven controller. Abandoned project due to some bugs and safety.
 
 ##Usage
 
